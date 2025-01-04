@@ -1,5 +1,6 @@
 CFLAGS=-Wall -g
-TARGET=ex1
+# TARGET=ex1
+TARGET=person
 CC=gcc
 
 all: $(TARGET)
