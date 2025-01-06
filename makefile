@@ -1,6 +1,6 @@
 CFLAGS=-Wall -g
 # TARGET=ex1
-TARGET=person
+TARGET=smallDb
 CC=gcc
 
 all: $(TARGET)
