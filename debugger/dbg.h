@@ -15,7 +15,7 @@
 
 #define log_err(M, ... ) fprintf(stderr, "[Error] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, clear_errno(), ##__VA_ARGS__)
 #define log_warn(M, ... ) fprintf(stderr, "[Warn] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, clear_errno(), ##__VA_ARGS__)
-#define log_info(M, ... ) fprintf(stderr, "[Info] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#define log_info(M, ... ) fprintf(stderr, "[Info] (%s:%d) " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 #define check(A, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); errno=0; goto error;}
 
