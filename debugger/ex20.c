@@ -26,6 +26,27 @@ void test_log_info() {
   log_info("It happened %f times today.", 1.3f);
 }
 
+int test_sentinel(int c){
+  char *temp = malloc(c);
+  check_mem(temp);
+
+  switch (c)
+  {
+  case 1:
+    log_info("It worked!");
+    break;
+  
+  default:
+    sentinel("I shouldn't run");
+  }
+
+  free(temp);
+  return 0;
+error:
+  if(temp) free(temp);
+  return -1;
+}
+
 int test_check(char *file_name){
   FILE *input = NULL;
   char *block = NULL;
@@ -48,6 +69,17 @@ error:
   return -1;
 }
 
+int test_mem(){
+  char *test = NULL;
+  check_mem(test);
+
+  free(test);
+  return 1;
+error:
+  // if(test) free(test);
+  return -1;
+}
+
 int main(int argc, char *argv[]){
   check(argc == 2, "Need an argument.");
 
@@ -58,6 +90,9 @@ int main(int argc, char *argv[]){
 
   check(test_check("ex20.c") == 0, "failed with ex20.c");
   check(test_check(argv[1]) == -1, "failed with argv");
+  check(test_sentinel(1) == 0, "test_sentinel failed.");
+  check(test_sentinel(100) == -1, "test_sentinel failed.");
+  check(test_mem() == -1, "test_mem failed.")
   return 0;
 
 error:
